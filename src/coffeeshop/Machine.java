@@ -65,23 +65,23 @@ public class Machine {
 
         public void run() {
             try {
-				/* Machine starts to cook food -> log event */
+                /* Machine starts to cook food -> log event */
                 Simulation.logEvent(SimulationEvent.machineCookingFood(Machine.this, machineFoodType));
 
-				/* Sleep to simulate different cooking time per each food type */
+                /* Sleep to simulate different cooking time per each food type */
                 Thread.sleep(machineFoodType.cookTimeMS);
 
-				/* Cooking is done -> log event that machine and cook finished the food */
+                /* Cooking is done -> log event that machine and cook finished the food */
                 Simulation.logEvent(SimulationEvent.machineDoneFood(Machine.this, machineFoodType));
                 Simulation.logEvent(SimulationEvent.cookFinishedFood(currCook, machineFoodType, orderNum));
 
-				/* Remove the cooked food from the to-do list */
-				synchronized (foodList) {
+                /* Remove the cooked food from the to-do list */
+                synchronized (foodList) {
                     foodList.remove();
                     foodList.notifyAll();
                 }
 
-				/* Add food to finished food list */
+                /* Add food to finished food list */
                 synchronized (currCook.finishedFood) {
                     currCook.finishedFood.add(machineFoodType);
                     currCook.finishedFood.notifyAll();
@@ -89,7 +89,7 @@ public class Machine {
 
 
             } catch (InterruptedException e) {
-				/* Machine gets interrupted -> shut down */
+                /* Machine gets interrupted -> shut down */
             }
         }
     }

@@ -95,14 +95,14 @@ public class CoffeeShopReportStreams {
                 .filter(event -> event.getEvent() == SimulationEvent.EventType.CookEnding)
                 .map(SimulationEvent::getCook)
                 .collect(Collectors.toMap(Function.identity(), cook -> {
-                    Map<Integer, Pair<Instant, Instant>> orderStartEnd = cook.getOrderStartEnd();
-                    return orderStartEnd
-                            .values()
-                            .stream()
-                            .mapToLong(pair -> Duration.between(pair.getK(), pair.getV()).toMillis())
-                            .average()
-                            .orElse(Double.MAX_VALUE);
-                    }
+                            Map<Integer, Pair<Instant, Instant>> orderStartEnd = cook.getOrderStartEnd();
+                            return orderStartEnd
+                                    .values()
+                                    .stream()
+                                    .mapToLong(pair -> Duration.between(pair.getK(), pair.getV()).toMillis())
+                                    .average()
+                                    .orElse(Double.MAX_VALUE);
+                        }
                 ));
     }
 }

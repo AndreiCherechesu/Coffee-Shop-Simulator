@@ -21,6 +21,10 @@ public class Customer implements Runnable {
         this.orderNum = runningCounter++;
     }
 
+    public static void setRunningCounter(int runningCounter) {
+        Customer.runningCounter = runningCounter;
+    }
+
     public String toString() {
         return name;
     }
@@ -31,10 +35,6 @@ public class Customer implements Runnable {
 
     public int getOrderNum() {
         return this.orderNum;
-    }
-
-    public static void setRunningCounter(int runningCounter) {
-        Customer.runningCounter = runningCounter;
     }
 
     public void run() {

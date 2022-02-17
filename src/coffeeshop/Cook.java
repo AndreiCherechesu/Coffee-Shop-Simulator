@@ -14,9 +14,13 @@ import java.util.Map;
  */
 public class Cook implements Runnable {
     private final String name;
-    private Customer currCustomer;
-    public List<Food> finishedFood = new LinkedList<Food>();
     private final Map<Integer, Pair<Instant, Instant>> orderStartEnd = new HashMap<>();
+    public List<Food> finishedFood = new LinkedList<Food>();
+    private Customer currCustomer;
+
+    public Cook(String name) {
+        this.name = name;
+    }
 
     public Customer getCurrCustomer() {
         return currCustomer;
@@ -28,10 +32,6 @@ public class Cook implements Runnable {
 
     public Map<Integer, Pair<Instant, Instant>> getOrderStartEnd() {
         return orderStartEnd;
-    }
-
-    public Cook(String name) {
-        this.name = name;
     }
 
     public String toString() {

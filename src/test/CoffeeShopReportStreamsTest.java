@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CoffeeShopReportStreamsTest {
-    static private List<SimulationEvent> simulationEventList;
     static private final CoffeeShopReportStreams coffeeShopReportStreams = new CoffeeShopReportStreams();
     static int numCustomers = 10;
     static int numCooks = 5;
     static int numTables = 5;
     static int machineCapacity = 2;
     static boolean randomOrders = true;
+    static private List<SimulationEvent> simulationEventList;
 
     @BeforeAll
     static void initialize() {
@@ -51,7 +51,7 @@ public class CoffeeShopReportStreamsTest {
         Set<Cook> cookSet = new HashSet<>();
         for (SimulationEvent e : simulationEventList) {
             if (e.getEvent() == SimulationEvent.EventType.CookReceivedOrder
-                && !cookSet.contains(e.getCook())) {
+                    && !cookSet.contains(e.getCook())) {
                 sum += coffeeShopReportStreams.getOrdersByCook(simulationEventList, e.getCook()).size();
                 cookSet.add(e.getCook());
             }

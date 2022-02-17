@@ -11,7 +11,6 @@ import java.util.List;
 public class SimulationEvent {
     public final EventType event;
 
-    ;
     /* Not all of these fields are relevant for every event;
        see factory methods below */
     public final Cook cook;

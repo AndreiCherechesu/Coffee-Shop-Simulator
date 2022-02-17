@@ -13,13 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ValidateTest {
-    static private List<SimulationEvent> events;
     static private final CoffeeShopReportStreams coffeeShopReportStreams = new CoffeeShopReportStreams();
     static int numCustomers = 10;
     static int numCooks = 5;
     static int numTables = 5;
     static int machineCapacity = 2;
     static boolean randomOrders = true;
+    static private List<SimulationEvent> events;
 
     @BeforeAll
     static void initialize() {
@@ -86,8 +86,7 @@ public class ValidateTest {
                 } else if (e.getMachine().getMachineName().equals("CoffeeMaker2000")) {
                     currNumCoffees++;
                 }
-            }
-            else if (e.getEvent() == SimulationEvent.EventType.MachineDoneFood) {
+            } else if (e.getEvent() == SimulationEvent.EventType.MachineDoneFood) {
                 if (e.getMachine().getMachineName().equals("Grill")) {
                     currNumBurgers--;
                 } else if (e.getMachine().getMachineName().equals("Fryer")) {

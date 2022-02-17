@@ -118,26 +118,26 @@ public class Simulation {
                     order.add(FoodType.coffee);
                 }
 
-				customers[i] = new Thread(
+                customers[i] = new Thread(
                         new Customer("Customer " + (i), order)
                 );
             }
         }
 
         // Start the customers -> they will try to enter the Coffee Shop
-		for (Thread customer : customers) {
-			customer.start();
-		}
+        for (Thread customer : customers) {
+            customer.start();
+        }
 
         try {
             // Wait for the customer threads to end
-			for (Thread customer : customers) {
-				customer.join();
-			}
+            for (Thread customer : customers) {
+                customer.join();
+            }
 
             // Interrupt cooks and wait for them to end
-			for (Thread cook : cooks) cook.interrupt();
-			for (Thread cook : cooks) cook.join();
+            for (Thread cook : cooks) cook.interrupt();
+            for (Thread cook : cooks) cook.join();
 
         } catch (InterruptedException e) {
             System.out.println("Simulation thread interrupted.");
@@ -157,7 +157,7 @@ public class Simulation {
     /*
      * Entry point for the simulation.
      */
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         int numCustomers = 100;
         int numCooks = 20;
